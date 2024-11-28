@@ -138,7 +138,7 @@ class AwaGPT:
         """
         url = "https://awagpt-775818477993.us-central1.run.app/translate"
         payload = {
-            "api_key": "5d6bd47c-3f15-4d28-b670-f94d5a8372e0",
+            "api_key": self.api_key,
             "base_lang": base_lang,
             "target_lang": target_lang,
             "text_to_translate": text_to_translate
