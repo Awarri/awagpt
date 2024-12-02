@@ -1,9 +1,0 @@
-LICENSE.txt
-README.md
-setup.py
-awagpt/awagpt.egg-info/PKG-INFO
-awagpt/awagpt.egg-info/SOURCES.txt
-awagpt/awagpt.egg-info/dependency_links.txt
-awagpt/awagpt.egg-info/top_level.txt
-awagpt/src/__init__.py
-awagpt/src/awagpt.py

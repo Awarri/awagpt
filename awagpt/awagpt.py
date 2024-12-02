@@ -1,5 +1,4 @@
 import base64
-from PyPDF2 import PdfReader
 import os
 import requests
 import mimetypes
@@ -23,9 +22,8 @@ def _convert_to_base64(file_path):
 
 
 class AwaGPT:
-    def __init__(self, api_key, rag_status=False, chat_interface=False, system_instruction=None):
+    def __init__(self, api_key, chat_interface=False, system_instruction=None):
         self.api_key = api_key
-        self.rag_status = rag_status
         self.chat_interface = chat_interface
         self.system_instruction = system_instruction
 
@@ -46,7 +44,6 @@ class AwaGPT:
         payload = {
             "api_key": self.api_key,
             "query": prompt,
-            "rag_status": str(self.rag_status).lower(),
             "chat_interface": str(self.chat_interface).lower(),
             "system_instruction": str(self.system_instruction)
         }
@@ -79,7 +76,6 @@ class AwaGPT:
         params = {
             "api_key": self.api_key,
             "query": prompt,
-            "rag_status": str(self.rag_status).lower(),
             "chat_interface": str(self.chat_interface).lower(),
             "system_instruction": str(self.system_instruction)
         }

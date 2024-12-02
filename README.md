@@ -1,6 +1,6 @@
 # AwaGPT
 
-**AwaGPT** is a powerful Python library designed for developers to interact with advanced language and audio models. It provides a seamless way to generate text, stream responses, transcribe audio, and translate text between languages using RESTful APIs.
+**AwaGPT** is a powerful Python library designed for developers to interact with advanced language and audio models. It provides a seamless way to generate text, stream responses, transcribe audio, and translate text between languages.
 
 ## Features
 
@@ -172,6 +172,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or support, please reach out at [support@awagpt.com](mailto:support@awagpt.com).
+For questions or support, please reach out at [support@awagpt.com](mailto:info@awagpt.com).
 
 Happy coding! 🚀
