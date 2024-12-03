@@ -1,6 +1,6 @@
 # AwaGPT
 
-**AwaGPT** is a powerful Python library designed for developers to interact with advanced language and audio models. It provides a seamless way to generate text, stream responses, transcribe audio, and translate text between languages.
+**AwaGPT** is a powerful Python library designed by **Awarri Technologies** for developers to interact with advanced localalized language and audio models that have been trained with local Nigerian data. It provides a seamless way to use these **SOTA models** to generate text, stream responses, transcribe audio, and translate text. The translation and Text generative Model has been adapted to work efficiently on the 3 Nigerian languages **(Yoruba, Hausa, Igbo)** and English, but the audio model has only been finetuned on Nigerian accented English.
 
 ## Features
 
@@ -39,7 +39,6 @@ from awagpt import AwaGPT
 
 awagpt = AwaGPT(
     api_key="your_api_key_here", 
-    rag_status=True,            # Optional: Enable/disable RAG (default: False)
     chat_interface=True,        # Optional: Enable chat interface (default: False)
     system_instruction="Provide concise answers"  # Optional system instruction
 )

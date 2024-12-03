@@ -3,6 +3,7 @@ import os
 import requests
 import mimetypes
 from typing import Union, List
+import json
 
 
 def _convert_to_base64(file_path):
@@ -71,6 +72,8 @@ class AwaGPT:
         """
         if not prompt:
             raise ValueError("No prompt provided.")
+        if str(self.chat_interface).lower() == 'true':
+            prompt = json.dumps(prompt)
 
         url = "https://awagpt-775818477993.us-central1.run.app/generate_text"
         params = {
@@ -91,11 +94,16 @@ class AwaGPT:
         except requests.exceptions.RequestException as e:
             raise ValueError(f"Request failed: {e}")
         
-    def transcribe_audio(self, data):
+    def transcribe_audio(self, data, language: str = 'English'):
         """
         Accepts base64 data or an audio file path (wav/mp3).
         Converts to base64 format if necessary, then sends to the endpoint.
         """
+        
+        # Check if the language is supported
+        if language.lower() != 'english':
+            raise ValueError("The chosen language is not currently supported.")
+    
         try:
             if isinstance(data, str) and data.startswith("data:audio/"):
                 base64_data = data
@@ -132,6 +140,21 @@ class AwaGPT:
         Returns:
             str: Translated text from the API.
         """
+        
+        allowed_languages = {'english', 'yoruba', 'igbo', 'hausa'}
+
+        # Check for missing arguments and validate language inputs
+        missing_args = [arg for arg, name in [(base_lang, "base_lang"), 
+                                            (target_lang, "target_lang"), 
+                                            (text_to_translate, "text_to_translate")] if not arg]
+        if missing_args:
+            raise ValueError(f"Missing required arguments: {', '.join(name for _, name in missing_args)}")
+
+        for lang, name in [(base_lang, "base_lang"), (target_lang, "target_lang")]:
+            if lang.lower() not in allowed_languages:
+                raise ValueError(f"Unsupported {name}: {lang}. Allowed languages are: {', '.join(allowed_languages)}")
+
+
         url = "https://awagpt-775818477993.us-central1.run.app/translate"
         payload = {
             "api_key": self.api_key,
@@ -148,3 +171,5 @@ class AwaGPT:
             raise ValueError(f"HTTP error occurred: {e.response.status_code} - {e.response.text}")
         except requests.exceptions.RequestException as e:
             raise ValueError(f"Request failed: {e}")
+        
+
